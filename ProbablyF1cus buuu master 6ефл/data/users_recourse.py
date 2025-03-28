@@ -1,11 +1,15 @@
 from flask_restful import reqparse, abort, Api, Resource
 from . import db_session
 from .users import User
+from flask import jsonify
+
+
 
 
 def abort_if_news_not_found(user_id):
     session = db_session.create_session()
-    news = session.query(User).get(user_id)
+    if type(user_id) == int:
+        news = session.query(User).get(user_id)
     if not news:
         abort(404, message=f"User {user_id} not found")
 

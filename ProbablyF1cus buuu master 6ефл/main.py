@@ -3,6 +3,7 @@ from flask import Flask
 
 app = Flask(__name__)
 api = Api(app)
+api.add_resourse()
 
 
 def main():
